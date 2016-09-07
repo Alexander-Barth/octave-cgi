@@ -1,3 +1,8 @@
+# This test script is expected to fail because file upload is not implemented.
+# This script is to be run in the inst directory or after the cgi package is installed.
+
+
+
 export DOCUMENT_ROOT=/var/www 
 export REQUEST_METHOD=POST 
 export CONTENT_TYPE=multipart/form-data

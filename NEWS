@@ -1,3 +1,8 @@
+Summary of changes for cgi 0.1.2:
+-------------------------------------------------------------------
+
+ ** Allow running the test code from any directory
+
 Summary of important user-visible changes for cgi 0.1.1:
 -------------------------------------------------------------------
 

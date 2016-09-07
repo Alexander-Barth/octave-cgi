@@ -1,10 +1,10 @@
 Name: cgi
-Version: 0.1.1
-Date: 2015-06-22
+Version: 0.1.2
+Date: 2016-09-07
 Author: Alexander Barth <barth.alexander@gmail.com>
 Maintainer: Alexander Barth <barth.alexander@gmail.com>
 Title: cgi
-Description: Common Gatway Interface for Octave
+Description: Common Gateway Interface for Octave
 Categories: Web development
 Depends: octave (>= 3.8.0)
 License: GPLv2+

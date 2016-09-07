@@ -1,3 +1,4 @@
+# This test script is to be run in the inst directory or after the cgi package is installed.
 
 export DOCUMENT_ROOT=/var/www 
 export REQUEST_METHOD=GET
@@ -5,6 +6,10 @@ export QUERY_STRING="x=50%2C1,2&y=1,2,3&len=10&name=test&field=random_field"
 
 echo "Test GET request"
 octave -q <<EOF
+if isempty(which('cgi'))
+  pkg load cgi
+end
+
 CGI = cgi();
 disp(CGI.form.y)
 assert(strcmp(CGI.form.y,'1,2,3'))
@@ -17,6 +22,10 @@ echo "Test GET request (with semicolon)"
 export QUERY_STRING="x=50%2C1,2;y=1,2,3;len=10;name=test;field=random_field" 
 
 octave -q <<EOF
+if isempty(which('cgi'))
+  pkg load cgi
+end
+
 CGI = cgi();
 assert(strcmp(CGI.form.y,'1,2,3'))
 assert(strcmp(CGI.form.field,'random_field'))
@@ -31,5 +40,11 @@ export CONTENT_TYPE=application/x-www-form-urlencoded
 export CONTENT_LENGTH=54
 
 echo "x=50%2C1,2&y=1,2,3&len=10&name=test&field=random_field" | \
-    octave -qH --eval "CGI = cgi(); assert(strcmp(CGI.form.y,'1,2,3')); disp('All tests passed');";
+    octave -qH --eval " \
+if isempty(which('cgi')); \
+  pkg load cgi; \
+end; \
+CGI = cgi(); \
+assert(strcmp(CGI.form.y,'1,2,3')); \
+disp('All tests passed');";
 
